@@ -1,0 +1,29 @@
+{
+  "name": "wamp-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewgenius/wamp-chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ewgenius/wamp-chat/issues"
+  },
+  "homepage": "https://github.com/ewgenius/wamp-chat#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-node": "^5.1.1",
+    "bluebird": "^3.3.1",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "graphql": "^0.4.17"
+  }
+}

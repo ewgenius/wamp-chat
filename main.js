@@ -1,0 +1,11 @@
+import express from 'express';
+
+let PORT = 3000;
+let app = express();
+
+let server = app.listen(PORT, () => {
+  let host = server.address().address;
+  let port = server.address().port;
+
+  console.log(`GraphQL listening at http://${host}:${port}`);
+})
