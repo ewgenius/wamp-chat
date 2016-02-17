@@ -1,6 +1,6 @@
 import express from 'express';
 
-let PORT = 3000;
+let PORT = process.env.PORT || 3000;
 let app = express();
 
 let server = app.listen(PORT, () => {
