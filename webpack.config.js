@@ -16,7 +16,7 @@ module.exports = {
       loader: 'babel-loader',
       exclude: /node_modules/,
       query: {
-        plugins: ['syntax-decorators'],
+        //plugins: ['syntax-decorators'],
         presets: ['es2015', 'react']
       }
     }]
