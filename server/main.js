@@ -1,6 +1,6 @@
 import express from 'express';
 
-import schema from './schema';
+import schema from './schemas/counter';
 import {
   graphql
 } from 'graphql';
