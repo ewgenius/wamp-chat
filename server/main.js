@@ -1,25 +1,66 @@
 import express from 'express';
-
-import schema from './schemas/counter';
 import {
-  graphql
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLInt,
+  GraphQLString
 } from 'graphql';
-import bodyParser from 'body-parser';
+import graphqlHTTP from 'express-graphql';
 
 let PORT = process.env.PORT || 3000;
 let app = express();
 
-// parse POST body as text
-app.use(bodyParser.text({
-  type: 'application/graphql'
-}));
-
-app.post('/graphql', (req, res) => {
-  graphql(schema, req.body)
-    .then((result) => {
-      res.send(JSON.stringify(result, null, 2));
-    });
+var userType = new GraphQLObjectType({
+  name: 'User',
+  fields: {
+    id: {
+      type: GraphQLString
+    },
+    name: {
+      type: GraphQLString
+    },
+  }
 });
+
+var data = {
+  "1": {
+    "id": "1",
+    "name": "Dan"
+  },
+  "2": {
+    "id": "2",
+    "name": "Lee"
+  },
+  "3": {
+    "id": "3",
+    "name": "Nick"
+  }
+};
+
+var schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      user: {
+        type: userType,
+        args: {
+          id: {
+            type: GraphQLString
+          }
+        },
+        resolve: function(_, args) {
+          return data[args.id];
+        }
+      }
+    }
+  })
+});
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  pretty: true,
+  graphiql: true
+}));
 
 let server = app.listen(PORT, () => {
   let host = server.address().address;
