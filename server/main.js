@@ -13,7 +13,6 @@ let app = express();
 app.use(bodyParser.text({
   type: 'application/graphql'
 }));
-app.use(express.static('../client/dist'));
 
 app.post('/graphql', (req, res) => {
   graphql(schema, req.body)
